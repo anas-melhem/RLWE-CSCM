@@ -62,7 +62,7 @@ Because `q` is an integer multiple of `p`, the `p*e*r` term disappears after red
 ## Repository Structure
 
 ```text
-RLWE-CSCM-cpp/
+RLWE-CSCM/
 ├── CMakeLists.txt
 ├── README.md
 ├── LICENSE
@@ -97,8 +97,8 @@ No external cryptographic library is required for this first prototype.
 ### Compile
 
 ```bash
-git clone https://github.com/anas-melhem/RLWE-CSCM-cpp.git
-cd RLWE-CSCM-cpp
+git clone https://github.com/anas-melhem/RLWE-CSCM.git
+cd RLWE-CSCM
 cmake -S . -B build
 cmake --build build
 ```
