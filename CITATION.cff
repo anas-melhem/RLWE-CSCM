@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: RLWE-CSCM C++ Prototype
+message: If you use this software, please cite it and the related dissertation contribution.
+authors:
+  - family-names: Melhem
+    given-names: Anas
+    alias: Anas Ibrahim
+year: 2026
+repository-code: https://github.com/anas-melhem/RLWE-CSCM-cpp
+keywords:
+  - fully homomorphic encryption
+  - RLWE
+  - lattice cryptography
+  - post-quantum cryptography
+  - privacy-preserving computation
