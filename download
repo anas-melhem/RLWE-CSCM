@@ -1,0 +1,44 @@
+#pragma once
+
+#include <cstdint>
+#include <initializer_list>
+#include <stdexcept>
+#include <string>
+#include <vector>
+#include <sstream>
+
+namespace rlwe_cscm {
+
+class Polynomial {
+public:
+    Polynomial() = default;
+    Polynomial(std::size_t degree, std::int64_t modulus);
+    Polynomial(std::vector<std::int64_t> coeffs, std::int64_t modulus);
+    Polynomial(std::initializer_list<std::int64_t> coeffs, std::int64_t modulus);
+
+    std::size_t degree() const { return coeffs_.size(); }
+    std::int64_t modulus() const { return modulus_; }
+    const std::vector<std::int64_t>& coeffs() const { return coeffs_; }
+    std::int64_t operator[](std::size_t i) const { return coeffs_.at(i); }
+    std::int64_t& operator[](std::size_t i) { return coeffs_.at(i); }
+
+    static std::int64_t mod(std::int64_t value, std::int64_t q);
+    static std::int64_t mod_mul(std::int64_t a, std::int64_t b, std::int64_t q);
+    static std::int64_t mod_inv(std::int64_t a, std::int64_t q);
+
+    Polynomial add(const Polynomial& other) const;
+    Polynomial sub(const Polynomial& other) const;
+    Polynomial mul(const Polynomial& other) const;
+    Polynomial scalar_mul(std::int64_t k) const;
+    Polynomial change_modulus(std::int64_t new_modulus) const;
+    bool equals_mod(const Polynomial& other, std::int64_t mod) const;
+    std::string str() const;
+
+private:
+    std::vector<std::int64_t> coeffs_;
+    std::int64_t modulus_{0};
+
+    void ensure_compatible(const Polynomial& other) const;
+};
+
+} // namespace rlwe_cscm
